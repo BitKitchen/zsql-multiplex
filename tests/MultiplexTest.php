@@ -44,6 +44,9 @@ class MultiplexTest extends PHPUnit_Framework_TestCase
     $this->assertTrue($database->hasWriter(), "Has writer");
     $this->assertInstanceOf('\\mysqli', $database->getReader(), "Has reader");
     $this->assertInstanceOf('\\mysqli', $database->getWriter(), "Has writer");
+
+    $database->setWriter(null);
+    $this->assertFalse($database->hasWriter());
   }
 
   public function testSelectQuery()
