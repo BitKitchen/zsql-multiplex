@@ -120,7 +120,7 @@ class Multiplex extends Database
    *
    * @param mysqli $writer
    */
-  public function setWriter(mysqli $writer)
+  public function setWriter(mysqli $writer = null)
   {
     $this->writer = $writer;
   }
