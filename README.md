@@ -4,19 +4,17 @@ A drop in replacement for zsql\Database with support for read/write splitting.
 
 ## Usage
 
-
-## Usage
-
 ```php
 $database = new \zsql\Multiplex($reader, $writer);
 
-
+// select runs against $reader
 $database->select()
   ->from('tableName')
   ->where('columnName', 'value')
   ->limit(1)
   ->query();
-  
+
+// insert runs against $writer
 $id = $database->insert()
   ->ignore()
   ->into('tableName')
@@ -24,6 +22,7 @@ $id = $database->insert()
   ->value('otherColumnName', 'otherValue')
   ->query();
 
+// update runs against $writer
 $database->update()
   ->table('tableName')
   ->set('columnName', 'value')
@@ -32,6 +31,7 @@ $database->update()
   ->limit(1)
   ->query();
 
+// delete runs against $writer
 $database->delete()
   ->from('tableName')
   ->where('columnName', 'value')
