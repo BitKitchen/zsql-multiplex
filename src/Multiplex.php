@@ -7,12 +7,12 @@ use \mysqli;
 class Multiplex extends Database
 {
   /**
-   * @param Database
+   * @param mysqli
    */
   protected $reader;
 
   /**
-   * @param Database
+   * @param mysqli
    */
   protected $writer;
 
