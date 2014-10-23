@@ -1,0 +1,17 @@
+{
+  "autoload" : {
+    "psr-4" : {
+      "zsql\\": "src/"
+    }
+  },
+  "name": "crankydragon/zsql-multiplex",
+  "require": {
+    "jbboehr/zsql": ">=0.3.4"
+  },
+  "require-dev" : {
+    "phpunit/phpunit": "3.7.*",
+    "phpunit/php-text-template" : "1.1.*",
+    "apigen/apigen" : "2.8.*"
+  },
+  "type" : "library"
+}

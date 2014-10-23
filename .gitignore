@@ -1,0 +1,10 @@
+build
+composer.lock
+doc
+nbproject
+zsql-multiplex.iml
+.idea
+reports
+vendor
+compatinfo.log
+gh-pages
