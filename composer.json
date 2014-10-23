@@ -1,4 +1,10 @@
 {
+  "authors" : [
+    {
+      "email" : "shwanky@gmail.com",
+      "name" : "Shaun Harding"
+    }
+  ],
   "autoload" : {
     "psr-4" : {
       "zsql\\": "src/"
