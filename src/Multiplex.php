@@ -22,8 +22,8 @@ class Multiplex extends Database
    */
   public function __construct(mysqli $reader, mysqli $writer = null)
   {
-    $this->writer = $writer;
-    $this->reader = $reader;
+    $this->setWriter($writer);
+    $this->setReader($reader);
 
     parent::__construct($reader);
   }
@@ -103,6 +103,26 @@ class Multiplex extends Database
   public function getWriter()
   {
     return $this->writer;
+  }
+
+  /**
+   * Sets the reader mysqli object
+   *
+   * @param mysqli $reader
+   */
+  public function setReader(mysqli $reader)
+  {
+    $this->reader = $reader;
+  }
+
+  /**
+   * Sets the writer mysqli object
+   *
+   * @param mysqli $writer
+   */
+  public function setWriter(mysqli $writer)
+  {
+    $this->writer = $writer;
   }
 
   /**
