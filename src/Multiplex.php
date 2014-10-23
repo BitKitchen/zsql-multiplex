@@ -29,6 +29,20 @@ class Multiplex extends Database
   }
 
   /**
+   * Closes all connections
+   */
+  public function __destruct()
+  {
+    if( $this->hasReader() ) {
+      $this->getReader()->close();
+    }
+
+    if( $this->hasWriter() ) {
+      $this->getWriter()->close();
+    }
+  }
+
+  /**
    * Executes an SQL query
    *
    * @param string|\zsql\Query $query
