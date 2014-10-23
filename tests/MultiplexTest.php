@@ -74,4 +74,17 @@ class MultiplexTest extends PHPUnit_Framework_TestCase
 
   }
 
+  public function testUseWriter()
+  {
+    $database = $this->multiplexerFactory();
+    $insert   = $database->query('SET @num := 1');
+    $result    = $database->useWriter()->query('SELECT @num')->fetchColumn();
+
+    $this->assertEquals(1, $result);
+
+    $insert   = $database->query('SET @num := 1');
+    $result   = $database->query('SELECT @num')->fetchColumn();
+    $this->assertEquals(null, $result);
+  }
+
 }

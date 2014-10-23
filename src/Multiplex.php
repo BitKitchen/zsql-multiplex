@@ -17,6 +17,11 @@ class Multiplex extends Database
   protected $writer;
 
   /**
+   * @var bool
+   */
+  protected $forceWriter = false;
+
+  /**
    * @param mysqli $reader
    * @param mysqli $writer
    */
@@ -51,11 +56,13 @@ class Multiplex extends Database
    */
   public function query($query, $resultmode = MYSQLI_STORE_RESULT)
   {
+
     /*
      * Swap out connection for writer for non-select queries
      */
-    if ( !$this->isSelect($query) && $this->hasWriter() ) {
+    if ( $this->canUseWriter($query) ) {
       $this->setConnection($this->writer);
+      $this->useWriter(false);
     }
 
     else {
@@ -63,6 +70,40 @@ class Multiplex extends Database
     }
 
     return parent::query($query, $resultmode);
+  }
+
+  /**
+   * Sets a flag that can force the next query to use the writer connection if it is available.
+   *
+   * @param bool $flag
+   * @return $this
+   */
+  public function useWriter($flag = true)
+  {
+    $this->forceWriter = $flag;
+    return $this;
+  }
+
+  /**
+   * Returns true if a query should use the writer mysqli object.
+   *
+   * @param $query
+   * @return bool
+   */
+  public function canUseWriter($query)
+  {
+    $allowed = !$this->isSelect($query) || $this->writerForced();
+    return  $this->hasWriter() && $allowed;
+  }
+
+  /**
+   * Returns true if the useWriter function was called.
+   *
+   * @return bool
+   */
+  public function writerForced()
+  {
+    return $this->forceWriter;
   }
 
   /**

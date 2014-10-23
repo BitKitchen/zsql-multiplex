@@ -37,4 +37,10 @@ $database->delete()
   ->where('columnName', 'value')
   ->limit(1)
   ->query();
+
+// ensure that the next query uses the $writer
+$insert   = $database->query('SET @num := 1');
+$result   = $database->useWriter()
+  ->query('SELECT @num')
+  ->fetchColumn();
 ```
