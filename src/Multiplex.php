@@ -174,9 +174,6 @@ class Multiplex extends Database
    */
   protected function isSelect($query)
   {
-    return  $query instanceof \zsql\Select
-        || is_numeric(stripos($query, 'select'))
-        || is_numeric(stripos($query, 'show'))
-        ;
+    return  $query instanceof \zsql\Select || preg_match('/^(SELECT|SHOW)/i', trim($query));
   }
 }
