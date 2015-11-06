@@ -19,7 +19,6 @@ sudo: false
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install
-  - /etc/init.d/mysql start || 1
   - mysql -uroot < tests/fixtures.sql
 
 script:
