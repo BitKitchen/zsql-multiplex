@@ -17,6 +17,8 @@ CREATE TABLE `zsql`.`table` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
+DROP TABLE IF EXISTS `zsql`.`fixture1`;
 DROP TABLE IF EXISTS `zsql`.`fixture2`;
+CREATE TABLE `zsql`.`fixture1` LIKE `zsql`.`table`;
 CREATE TABLE `zsql`.`fixture2` LIKE `zsql`.`fixture1`;
 INSERT `zsql`.`fixture2` SELECT * FROM `zsql`.`fixture1`;
