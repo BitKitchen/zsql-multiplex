@@ -10,7 +10,7 @@
       "zsql\\": "src/"
     }
   },
-  "name": "crankydragon/zsql-multiplex",
+  "name": "bit-kitchen/zsql-multiplex",
   "require": {
     "jbboehr/zsql": ">=0.3.4"
   },
