@@ -1,5 +1,7 @@
 # zsql\Multiplex.php
 
+[![Build Status](https://travis-ci.org/BitKitchen/zsql-multiplex.svg)](https://travis-ci.org/BitKitchen/zsql-multiplex)
+
 A drop in replacement for zsql\Database with support for read/write splitting.
 
 ## Usage
