@@ -2,9 +2,12 @@
 
 namespace zsql;
 
-use \mysqli;
+use mysqli;
+use zsql\Adapter\MysqliAdapter;
+use zsql\QueryBuilder\Query;
+use zsql\Result\MysqliResult;
 
-class Multiplex extends Database
+class Multiplex extends MysqliAdapter
 {
   /**
    * @param mysqli
@@ -50,22 +53,19 @@ class Multiplex extends Database
   /**
    * Executes an SQL query
    *
-   * @param string|\zsql\Query $query
+   * @param Query|string $query
    * @param string $resultmode
-   * @return \zsql\Result|mixed
+   * @return MysqliResult|mixed
    */
   public function query($query, $resultmode = MYSQLI_STORE_RESULT)
   {
-
     /*
      * Swap out connection for writer for non-select queries
      */
     if ( $this->canUseWriter($query) ) {
       $this->setConnection($this->writer);
       $this->useWriter(false);
-    }
-
-    else {
+    } else {
       $this->setConnection($this->reader);
     }
 
@@ -169,7 +169,7 @@ class Multiplex extends Database
   /**
    * Tests for queries that do not modify.
    *
-   * @param string|\zsql\Query $query
+   * @param Query|string $query
    * @return bool
    */
   protected function isSelect($query)

@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "jbboehr/zsql",
-            "version": "v0.3.10",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jbboehr/zsql.php.git",
-                "reference": "5db29307796f3270fd4f6e6735333fff53ac7ac7"
+                "reference": "cd03da3f0245cb1c4d7aeb49c463fb4302417c5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jbboehr/zsql.php/zipball/5db29307796f3270fd4f6e6735333fff53ac7ac7",
-                "reference": "5db29307796f3270fd4f6e6735333fff53ac7ac7",
+                "url": "https://api.github.com/repos/jbboehr/zsql.php/zipball/cd03da3f0245cb1c4d7aeb49c463fb4302417c5f",
+                "reference": "cd03da3f0245cb1c4d7aeb49c463fb4302417c5f",
                 "shasum": ""
             },
             "require": {
@@ -34,6 +34,9 @@
             },
             "type": "library",
             "autoload": {
+                "files": [
+                    "src/compat.php"
+                ],
                 "psr-4": {
                     "zsql\\": "src/"
                 }
@@ -56,7 +59,7 @@
                 "mysql",
                 "sql"
             ],
-            "time": "2015-07-06 23:42:00"
+            "time": "2015-12-08 01:41:30"
         }
     ],
     "packages-dev": [

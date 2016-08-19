@@ -1,5 +1,8 @@
 
-test:
+vendor: composer.json composer.lock
+	composer install
+
+test: vendor
 	@"./vendor/bin/phpunit" -c phpunit.xml tests
 
 test-cov-cli:
